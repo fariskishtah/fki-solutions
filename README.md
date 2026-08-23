@@ -18,6 +18,8 @@ npm run lint
 npm run build
 ```
 
+The production build is a static export written to `out/`.
+
 ## Product catalogue
 
 Product content lives in `data/products.ts`. Add one object to the `products` array to create a catalogue card and a corresponding `/products/[slug]` detail page from the shared template.
@@ -36,4 +38,15 @@ The V1 contact form is intentionally frontend-only. Its submit handler in `compo
 
 ## Hosting
 
-The project uses the Next.js App Router through vinext and produces a Cloudflare Worker-compatible build for OpenAI Sites. No database, storage bucket, or backend API is required.
+The primary build uses the Next.js App Router with `output: "export"` for Cloudflare Pages. No database, storage bucket, server runtime, authentication layer, or backend API is required.
+
+Cloudflare Pages settings:
+
+- Framework preset: `Next.js (Static HTML Export)`
+- Build command: `npx next build`
+- Build output directory: `out`
+- Production branch: `main`
+
+Set `NEXT_PUBLIC_SITE_URL` to the final `https://<project>.pages.dev` URL or custom domain so sitemap, robots, canonical metadata, and social-preview URLs use the public Cloudflare origin. Node.js is pinned through `.node-version`.
+
+The legacy vinext scripts remain available as `npm run dev:sites` and `npm run build:sites`; they are not used by Cloudflare Pages.

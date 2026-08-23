@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { siteUrl } from "@/data/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://fk-solutions.aiarabic362.chatgpt.site"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "FK Solutions — AI & Software Solutions",
     template: "%s — FK Solutions",
