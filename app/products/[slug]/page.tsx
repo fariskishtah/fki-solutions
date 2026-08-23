@@ -50,7 +50,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
       <section className="detail-dark-section">
         <div className="section-shell detail-capabilities">
-          <div><span className="section-kicker">Key capabilities</span><h2>Focused tools for a connected workflow.</h2></div>
+          <div><span className="section-kicker">Core capabilities</span><h2>Focused tools for a connected workflow.</h2></div>
           <div className="capability-detail-grid">{product.capabilities.map((capability, index) => <div key={capability}><span>0{index + 1}</span><p>{capability}</p></div>)}</div>
         </div>
       </section>
@@ -61,22 +61,19 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
       </section>
 
       <section className="section-shell technology-section">
-        <div><span className="section-kicker">Technology</span><h2>Built as an intelligent system—not a feature layer.</h2></div>
+        <div><span className="section-kicker">Architecture / Technology</span><h2>High-level technical foundations.</h2><p className="architecture-note">A credibility-focused overview without exposing private infrastructure or security-sensitive implementation details.</p></div>
         <div className="technology-list">{product.technologies.map((technology) => <span key={technology}>{technology}</span>)}</div>
       </section>
 
       <section className="preview-section">
         <div className="section-shell">
-          <div className="section-row"><div><span className="section-kicker">Product preview</span><h2>Interface gallery</h2></div><span className="demo-label">Media placeholders</span></div>
-          <div className="preview-grid">
-            <div className={`preview-frame preview-main accent-${product.accent}`}><div className="preview-chrome"><i /><i /><i /><span>Product interface / main view</span></div><div className="preview-ui"><aside /><div><b /><span /><span /><span /></div></div></div>
-            <div className={`preview-frame accent-${product.accent}`}><div className="preview-chrome"><i /><i /><i /><span>Detail view</span></div><div className="preview-ui small-ui"><aside /><div><b /><span /><span /></div></div></div>
-            <div className="preview-placeholder"><span>+</span><p>Screenshot or product video</p><small>Ready for future media</small></div>
-          </div>
+          <div className="section-row"><div><span className="section-kicker">Product preview</span><h2>Interface &amp; media</h2></div><span className="demo-label">Coming soon</span></div>
+          <div className={`media-empty-state accent-${product.accent}`}><div className="media-radar" aria-hidden="true"><i /><i /><i /></div><div><span>Preview material in preparation</span><p>Verified screenshots, product video, demos, and case-study links can be added here through the product data model when they are ready for public release.</p></div></div>
         </div>
       </section>
 
       <section className="section-shell status-section"><span className="section-kicker">Current status</span><div><StatusBadge status={product.status} /><p>{product.currentStatus}</p></div></section>
+      <section className="section-shell roadmap-section"><div><span className="section-kicker">Roadmap</span><h2>Measured progress toward wider use.</h2></div><div>{product.roadmap.map((item, index) => <article key={item}><span>0{index + 1}</span><p>{item}</p></article>)}</div></section>
       <div className="section-shell"><CTASection eyebrow="Interested in this product?" title={`Explore ${product.name}.`} copy="Start a conversation about access, collaboration, or the problem this product is designed to solve." label={product.cta.label} href={product.cta.href} /></div>
     </main>
   );

@@ -1,7 +1,4 @@
-export type ProductStatus =
-  | "Live / Beta"
-  | "In Development"
-  | "Prototype / Research";
+export type ProductStatus = "Controlled Pilot / Beta" | "In Development";
 
 export type Product = {
   slug: string;
@@ -18,9 +15,18 @@ export type Product = {
   problem: string;
   solution: string;
   currentStatus: string;
+  roadmap: string[];
   cta: { label: string; href: string };
-  accent: "lime" | "violet" | "amber";
+  accent: "lime" | "violet";
   workflow: { step: string; title: string; detail: string }[];
+  media: {
+    screenshots: string[];
+    videoUrl?: string;
+    demoUrl?: string;
+    githubUrl?: string;
+    liveUrl?: string;
+    caseStudyUrl?: string;
+  };
 };
 
 export const products: Product[] = [
@@ -30,122 +36,104 @@ export const products: Product[] = [
     name: "Legal Intelligence Platform",
     tagline: "Legal work, organized around intelligence.",
     summary:
-      "An AI-powered legal intelligence and case-management platform designed for Egyptian lawyers and law firms.",
+      "AI-powered legal intelligence and case-management infrastructure for Egyptian lawyers and law firms.",
     description:
-      "A focused workspace for organizing case material, retrieving relevant legal knowledge, and building a clearer view of facts, evidence, and strategy.",
+      "A focused workspace being developed to organize case material, support legal research, and build a clearer view of facts, evidence, citations, and strategy.",
     industry: "Legal",
     status: "In Development",
     featured: true,
     capabilities: [
-      "Case document intelligence",
+      "Secure case workspaces",
+      "Legal document intelligence",
       "Legal research",
-      "Case weakness analysis",
-      "Evidence and fact tracking",
+      "Fact provenance",
+      "Case analysis",
       "Egyptian legal knowledge retrieval",
-      "AI-assisted legal strategy",
+      "Citation verification",
+      "AI-assisted legal workflows",
     ],
     technologies: [
       "Document intelligence",
+      "Retrieval-augmented generation",
       "Knowledge retrieval",
-      "Natural language processing",
-      "Secure case workspaces",
+      "Citation-aware workflows",
+      "Secure application architecture",
     ],
     problem:
-      "Legal casework spans documents, facts, research, evidence, and evolving strategy. Important context is easily fragmented across files and disconnected tools, slowing analysis and making critical relationships harder to see.",
+      "Legal casework spans documents, facts, research, citations, evidence, and evolving strategy. Important context is easily fragmented across files and disconnected tools, making critical relationships harder to trace and verify.",
     solution:
-      "The platform is designed to bring case material into one structured intelligence layer—helping legal professionals retrieve knowledge, examine weaknesses, track evidence, and develop strategy with AI assistance while keeping human judgment at the center.",
+      "The platform is being designed as a structured intelligence layer for casework—bringing documents, legal knowledge, facts, and citations into one workspace while keeping professional judgment at the center of every workflow.",
     currentStatus:
-      "Core product architecture and legal intelligence workflows are currently in development. Access is not yet generally available.",
+      "The platform is in active development and is not yet production launched. The capabilities shown represent the current product direction and development scope, not a claim of general availability.",
+    roadmap: [
+      "Validate core case and document workflows",
+      "Strengthen citation and source-verification patterns",
+      "Refine Egyptian legal knowledge retrieval",
+      "Prepare controlled evaluation with legal professionals",
+    ],
     cta: { label: "Discuss the platform", href: "/contact" },
     accent: "lime",
     workflow: [
-      { step: "01", title: "Ingest", detail: "Bring case documents and facts into a structured workspace." },
-      { step: "02", title: "Connect", detail: "Map people, evidence, claims, and relevant legal knowledge." },
-      { step: "03", title: "Analyze", detail: "Surface gaps, contradictions, and lines of inquiry." },
-      { step: "04", title: "Decide", detail: "Turn intelligence into an organized case strategy." },
+      { step: "01", title: "Organize", detail: "Structure case documents, facts, and supporting material." },
+      { step: "02", title: "Retrieve", detail: "Find relevant knowledge and source-linked context." },
+      { step: "03", title: "Analyze", detail: "Examine relationships, gaps, and lines of inquiry." },
+      { step: "04", title: "Review", detail: "Keep conclusions traceable for professional judgment." },
     ],
+    media: { screenshots: [] },
   },
   {
     slug: "factorymind",
     index: "02",
     name: "FactoryMind",
-    tagline: "Operational intelligence for modern manufacturing.",
+    tagline: "Enterprise intelligence for modern manufacturing.",
     summary:
-      "An intelligent manufacturing platform designed to help factories monitor operations, analyze production data, and make smarter operational decisions using AI.",
+      "An enterprise AI and manufacturing intelligence platform for operational visibility, model-driven analysis, and controlled decision support.",
     description:
-      "A manufacturing intelligence layer that turns operational signals into clearer visibility and more informed production decisions.",
+      "A production-oriented manufacturing platform combining operational software, asynchronous machine-learning workflows, model governance, and monitoring.",
     industry: "Manufacturing",
-    status: "Live / Beta",
+    status: "Controlled Pilot / Beta",
     featured: true,
     capabilities: [
-      "Production monitoring",
-      "Operational data analysis",
-      "Decision-support workflows",
-      "Issue and trend visibility",
-      "AI-assisted analysis",
-      "Management dashboards",
+      "Production and operational monitoring",
+      "Asynchronous ML training",
+      "MLflow model governance",
+      "Model and drift monitoring",
+      "Role-based operational access",
+      "Decision-support dashboards",
     ],
     technologies: [
-      "Operational analytics",
-      "AI decision support",
-      "Data pipelines",
-      "Responsive dashboards",
+      "FastAPI",
+      "React",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "JWT / RBAC",
+      "Asynchronous ML training",
+      "MLflow",
+      "Model monitoring",
+      "Drift monitoring",
     ],
     problem:
-      "Production decisions depend on signals spread across machines, teams, shifts, and reports. When that information stays fragmented, issues are harder to spot and operational decisions arrive late.",
+      "Manufacturing intelligence depends on operational data, models, people, and decisions working as one governed system. Fragmented tools make it difficult to maintain visibility across production, model behavior, and access responsibilities.",
     solution:
-      "FactoryMind is designed to consolidate production context, expose meaningful patterns, and support operators and managers with timely, understandable intelligence for day-to-day decisions.",
+      "FactoryMind brings application workflows, operational data, asynchronous model training, governance, and monitoring into a unified enterprise platform designed for controlled manufacturing use.",
     currentStatus:
-      "A beta version is live. Product capabilities and operational workflows continue to be refined through practical use.",
-    cta: { label: "Request beta access", href: "/contact" },
+      "FactoryMind is positioned for controlled pilot and beta use. Capabilities and operational workflows continue to be evaluated and refined before broader availability.",
+    roadmap: [
+      "Expand controlled operational evaluation",
+      "Refine model-governance workflows",
+      "Strengthen monitoring and drift visibility",
+      "Prepare deployment patterns for broader environments",
+    ],
+    cta: { label: "Discuss a pilot", href: "/contact" },
     accent: "violet",
     workflow: [
-      { step: "01", title: "Collect", detail: "Bring relevant operational signals into one view." },
-      { step: "02", title: "Monitor", detail: "Track production context as operations evolve." },
-      { step: "03", title: "Interpret", detail: "Identify trends, exceptions, and emerging issues." },
-      { step: "04", title: "Act", detail: "Support faster, better-informed operational decisions." },
+      { step: "01", title: "Connect", detail: "Bring relevant operational signals into a governed data flow." },
+      { step: "02", title: "Train", detail: "Run asynchronous machine-learning workflows with tracked models." },
+      { step: "03", title: "Monitor", detail: "Observe operations, model behavior, and drift indicators." },
+      { step: "04", title: "Decide", detail: "Support role-aware operational review and action." },
     ],
-  },
-  {
-    slug: "kitcheneye",
-    index: "03",
-    name: "KitchenEye",
-    tagline: "See waste. Understand cost. Improve the kitchen.",
-    summary:
-      "An AI-powered restaurant waste intelligence system that helps businesses identify food waste, understand its cost, and reduce unnecessary losses.",
-    description:
-      "A research-stage system exploring how computer vision and operational data can make food waste visible, measurable, and actionable.",
-    industry: "Hospitality",
-    status: "Prototype / Research",
-    featured: true,
-    capabilities: [
-      "Waste event identification",
-      "Food category tracking",
-      "Cost visibility",
-      "Operational waste patterns",
-      "Kitchen insight summaries",
-      "Reduction opportunity discovery",
-    ],
-    technologies: [
-      "Computer vision",
-      "Event classification",
-      "Cost analytics",
-      "Operational reporting",
-    ],
-    problem:
-      "Restaurant food waste is often recorded inconsistently or not at all. Without a reliable picture of what is discarded, when, and at what cost, teams struggle to address preventable loss.",
-    solution:
-      "KitchenEye explores a lightweight intelligence system that identifies waste events, organizes them into useful categories, and gives operators a clearer view of cost and reduction opportunities.",
-    currentStatus:
-      "KitchenEye is a research prototype. The concept and sensing workflows are being explored and are not presented as a generally available product.",
-    cta: { label: "Explore a collaboration", href: "/contact" },
-    accent: "amber",
-    workflow: [
-      { step: "01", title: "Observe", detail: "Capture relevant kitchen waste events." },
-      { step: "02", title: "Classify", detail: "Organize waste by type and operational context." },
-      { step: "03", title: "Value", detail: "Connect recurring waste with its estimated cost." },
-      { step: "04", title: "Improve", detail: "Surface practical opportunities to reduce loss." },
-    ],
+    media: { screenshots: [] },
   },
 ];
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SocialLinks } from "./SocialLinks";
 
 export function SiteFooter() {
   return (
@@ -11,10 +12,10 @@ export function SiteFooter() {
         <div className="footer-nav">
           <div><span>Company</span><Link href="/about">About</Link><Link href="/labs">Labs</Link><Link href="/contact">Contact</Link></div>
           <div><span>Explore</span><Link href="/products">Products</Link><Link href="/services">Services</Link></div>
-          <div><span>Connect</span><span className="placeholder-link">LinkedIn — soon</span><span className="placeholder-link">GitHub — soon</span></div>
+          <div><span>Connect</span><SocialLinks compact /></div>
         </div>
       </div>
-      <div className="footer-bottom"><span>© {new Date().getFullYear()} FK Solutions</span><span>Cairo · Building globally</span></div>
+      <div className="footer-bottom"><span>© {new Date().getFullYear()} FK Solutions</span><span>Cairo, Egypt · Building globally</span></div>
     </footer>
   );
 }

@@ -18,7 +18,7 @@ export function ContactForm() {
       </div>
       <label>Company / organization<input name="company" autoComplete="organization" placeholder="Optional" /></label>
       <label>What are you interested in?
-        <select required name="interest" defaultValue=""><option value="" disabled>Select an option</option><option>FK Solutions Product</option><option>Custom AI Solution</option><option>Software Development</option><option>Partnership</option><option>Other</option></select>
+        <select required name="interest" defaultValue=""><option value="" disabled>Select an option</option><option>Product Inquiry</option><option>Custom AI Solution</option><option>Software Development</option><option>AI Automation</option><option>Partnership</option><option>Technical Collaboration</option><option>Other</option></select>
       </label>
       <label>Message<textarea required name="message" rows={6} placeholder="Tell us about the problem, workflow, or opportunity." /></label>
       <button className="button button-primary form-button" type="submit">Prepare inquiry <span aria-hidden="true">↗</span></button>

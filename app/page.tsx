@@ -2,7 +2,9 @@ import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
 import { ProductCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
+import { WorkCard } from "@/components/WorkCard";
 import { getFeaturedProducts } from "@/data/products";
+import { selectedWork, technicalCapabilities } from "@/data/work";
 
 const buildAreas = [
   ["AI", "AI Products", "Purpose-built AI applications designed around real workflows."],
@@ -18,7 +20,7 @@ const principles = [
   ["04", "Designed to Scale", "Products are built with long-term architecture and security in mind."],
 ];
 
-const industries = ["Legal", "Manufacturing", "Hospitality", "Business Operations", "Data & Analytics"];
+const industries = ["Legal", "Manufacturing", "Knowledge Systems", "Business Operations", "Data & Analytics"];
 
 export default function Home() {
   const featured = getFeaturedProducts();
@@ -66,7 +68,27 @@ export default function Home() {
             <SectionHeading eyebrow="Selected products" title="Products with a clear job to do." copy="Each starts with a specific operational challenge and is shaped around the people solving it." />
             <Link className="text-link" href="/products">View all products <span aria-hidden="true">↗</span></Link>
           </div>
-          <div className="products-grid">{featured.map((product) => <ProductCard key={product.slug} product={product} />)}</div>
+          <div className="products-grid products-grid-featured">{featured.map((product) => <ProductCard key={product.slug} product={product} />)}</div>
+        </section>
+
+        <section className="selected-work-section">
+          <div className="section-shell">
+            <div className="section-row">
+              <SectionHeading eyebrow="Selected work" title="Engineering depth beyond the product catalogue." copy="Verified AI, platform, and research systems—presented as technical work, not commercial FK Solutions products." />
+              <Link className="text-link" href="/labs">Explore FK Labs <span aria-hidden="true">↗</span></Link>
+            </div>
+            <div className="work-grid">{selectedWork.slice(0, 4).map((project) => <WorkCard key={project.slug} project={project} />)}</div>
+          </div>
+        </section>
+
+        <section className="section-shell expertise-section">
+          <SectionHeading eyebrow="Technology expertise" title="Built across the full AI product stack." copy="A restrained view of the capabilities behind FK Solutions products and engineering work." />
+          <div className="expertise-grid">{technicalCapabilities.map((category) => <article key={category.group}><h3>{category.group}</h3><div>{category.items.slice(0, 7).map((item) => <span key={item}>{item}</span>)}</div></article>)}</div>
+        </section>
+
+        <section className="section-shell leadership-strip">
+          <div><span className="section-kicker">Founder &amp; technical leadership</span><h2>Product direction grounded in hands-on engineering.</h2></div>
+          <div><p>FK Solutions is led by Faris Mohamed Kishtah, an AI/ML engineer working across RAG, generative AI systems, full-stack Python, and MLOps.</p><Link className="text-link" href="/about">About the company <span aria-hidden="true">↗</span></Link></div>
         </section>
 
         <section className="section-shell why-section">

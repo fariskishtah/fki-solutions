@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 const links = [
+  ["Home", "/"],
   ["Products", "/products"],
   ["Services", "/services"],
   ["Labs", "/labs"],

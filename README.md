@@ -22,7 +22,13 @@ npm run build
 
 Product content lives in `data/products.ts`. Add one object to the `products` array to create a catalogue card and a corresponding `/products/[slug]` detail page from the shared template.
 
-Each product supports a status, industry, summary, detailed problem and solution, capabilities, technologies, workflow, current-status copy, CTA, and visual accent.
+Each product supports a status, industry, summary, detailed problem and solution, capabilities, technologies, workflow, roadmap, current-status copy, CTA, visual accent, screenshots, video, demo, GitHub, live product, and case-study URLs.
+
+Verified engineering work and experimental projects live separately in `data/work.ts` and `data/labs.ts`, keeping the commercial product catalogue focused.
+
+## Contact and social links
+
+Verified contact information and optional social accounts are centralized in `data/site.ts`. Only non-null social URLs render across the site. A public phone number is disabled by default.
 
 ## Contact form
 
