@@ -1,4 +1,4 @@
-export type ProductStatus = "Controlled Pilot / Beta" | "In Development";
+export type ProductStatus = "Live" | "Controlled Pilot / Beta" | "In Development";
 
 export type Product = {
   slug: string;
@@ -8,6 +8,7 @@ export type Product = {
   summary: string;
   description: string;
   industry: string;
+  categories: string[];
   status: ProductStatus;
   featured: boolean;
   capabilities: string[];
@@ -16,17 +17,19 @@ export type Product = {
   solution: string;
   currentStatus: string;
   roadmap: string[];
-  cta: { label: string; href: string };
+  cta?: { label: string; href: string; type: "contact" | "demo" | "github" | "live" | "coming-soon" };
   accent: "lime" | "violet";
   workflow: { step: string; title: string; detail: string }[];
   media: {
-    screenshots: string[];
-    videoUrl?: string;
+    screenshots: { src: string; alt: string; caption?: string }[];
+    videos: { src: string; title: string; captionsSrc: string; poster?: string }[];
+    architectureDiagram?: { src: string; alt: string };
     demoUrl?: string;
     githubUrl?: string;
     liveUrl?: string;
     caseStudyUrl?: string;
   };
+  stats?: { label: string; value: string }[];
 };
 
 export const products: Product[] = [
@@ -40,6 +43,7 @@ export const products: Product[] = [
     description:
       "A focused workspace being developed to organize case material, support legal research, and build a clearer view of facts, evidence, citations, and strategy.",
     industry: "Legal",
+    categories: ["AI", "RAG", "Data"],
     status: "In Development",
     featured: true,
     capabilities: [
@@ -71,7 +75,7 @@ export const products: Product[] = [
       "Refine Egyptian legal knowledge retrieval",
       "Prepare controlled evaluation with legal professionals",
     ],
-    cta: { label: "Discuss the platform", href: "/contact" },
+    cta: { label: "Discuss the platform", href: "/contact", type: "contact" },
     accent: "lime",
     workflow: [
       { step: "01", title: "Organize", detail: "Structure case documents, facts, and supporting material." },
@@ -79,7 +83,7 @@ export const products: Product[] = [
       { step: "03", title: "Analyze", detail: "Examine relationships, gaps, and lines of inquiry." },
       { step: "04", title: "Review", detail: "Keep conclusions traceable for professional judgment." },
     ],
-    media: { screenshots: [] },
+    media: { screenshots: [], videos: [] },
   },
   {
     slug: "factorymind",
@@ -91,6 +95,7 @@ export const products: Product[] = [
     description:
       "A production-oriented manufacturing platform combining operational software, asynchronous machine-learning workflows, model governance, and monitoring.",
     industry: "Manufacturing",
+    categories: ["AI", "Automation", "Data"],
     status: "Controlled Pilot / Beta",
     featured: true,
     capabilities: [
@@ -125,7 +130,7 @@ export const products: Product[] = [
       "Strengthen monitoring and drift visibility",
       "Prepare deployment patterns for broader environments",
     ],
-    cta: { label: "Discuss a pilot", href: "/contact" },
+    cta: { label: "Discuss a pilot", href: "/contact", type: "contact" },
     accent: "violet",
     workflow: [
       { step: "01", title: "Connect", detail: "Bring relevant operational signals into a governed data flow." },
@@ -133,7 +138,7 @@ export const products: Product[] = [
       { step: "03", title: "Monitor", detail: "Observe operations, model behavior, and drift indicators." },
       { step: "04", title: "Decide", detail: "Support role-aware operational review and action." },
     ],
-    media: { screenshots: [] },
+    media: { screenshots: [], videos: [] },
   },
 ];
 

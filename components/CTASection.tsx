@@ -1,18 +1,13 @@
 import Link from "next/link";
+import { siteConfig, type CTAConfig } from "@/data/site";
 
 export function CTASection({
-  eyebrow = "Start a conversation",
-  title = "Have a problem worth solving?",
-  copy = "Let’s explore how software and AI can turn it into a scalable product.",
-  label = "Work with us",
-  href = "/contact",
-}: {
-  eyebrow?: string;
-  title?: string;
-  copy?: string;
-  label?: string;
-  href?: string;
-}) {
+  eyebrow = siteConfig.defaultCTA.eyebrow,
+  title = siteConfig.defaultCTA.title,
+  copy = siteConfig.defaultCTA.copy,
+  label = siteConfig.defaultCTA.label,
+  href = siteConfig.defaultCTA.href,
+}: Partial<CTAConfig>) {
   return (
     <section className="cta-band">
       <div className="cta-grid" aria-hidden="true" />

@@ -1,29 +1,19 @@
 import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
+import { LabCard } from "@/components/LabCard";
 import { ProductCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { WorkCard } from "@/components/WorkCard";
 import { getFeaturedProducts } from "@/data/products";
+import { labProjects } from "@/data/labs";
+import { siteConfig } from "@/data/site";
 import { selectedWork, technicalCapabilities } from "@/data/work";
-
-const buildAreas = [
-  ["AI", "AI Products", "Purpose-built AI applications designed around real workflows."],
-  ["AX", "Intelligent Automation", "Systems that automate complex operational and business processes."],
-  ["DX", "Data & Decision Systems", "Platforms that transform data into actionable intelligence."],
-  ["SW", "Custom Software", "Scalable web applications and technology solutions built around client requirements."],
-];
-
-const principles = [
-  ["01", "Built Around Real Problems", "We start with operational problems, not technology trends."],
-  ["02", "AI Where It Matters", "AI is used when it produces measurable value, not simply as a feature."],
-  ["03", "From Idea to Product", "Research, architecture, development, testing, and deployment."],
-  ["04", "Designed to Scale", "Products are built with long-term architecture and security in mind."],
-];
-
-const industries = ["Legal", "Manufacturing", "Knowledge Systems", "Business Operations", "Data & Analytics"];
 
 export default function Home() {
   const featured = getFeaturedProducts();
+  const featuredWork = selectedWork.filter((project) => project.featured);
+  const featuredLabs = labProjects.filter((project) => project.featured);
+  const { hero, founder } = siteConfig;
 
   return (
     <>
@@ -33,12 +23,12 @@ export default function Home() {
           <div className="hero-glow" aria-hidden="true" />
           <div className="hero-shell">
             <div className="hero-copy">
-              <div className="eyebrow"><span className="eyebrow-dot" /> AI &amp; software solutions</div>
-              <h1>Building intelligent solutions for <em>real-world problems.</em></h1>
-              <p>FK Solutions designs and builds AI-powered platforms, intelligent automation systems, and scalable software products for industries where technology can create measurable impact.</p>
+              <div className="eyebrow"><span className="eyebrow-dot" /> {hero.eyebrow}</div>
+              <h1>{hero.title} <em>{hero.emphasis}</em></h1>
+              <p>{hero.copy}</p>
               <div className="hero-actions">
-                <Link className="button button-primary" href="/products">Explore our products <span aria-hidden="true">↗</span></Link>
-                <Link className="button button-secondary" href="/contact">Work with us</Link>
+                <Link className="button button-primary" href={hero.primaryCTA.href}>{hero.primaryCTA.label} <span aria-hidden="true">↗</span></Link>
+                <Link className="button button-secondary" href={hero.secondaryCTA.href}>{hero.secondaryCTA.label}</Link>
               </div>
             </div>
             <div className="hero-visual" aria-hidden="true">
@@ -49,15 +39,15 @@ export default function Home() {
               <div className="visual-caption caption-two"><span>Signal / Active</span></div>
             </div>
           </div>
-          <div className="hero-foot"><span>Strategy</span><span>Artificial intelligence</span><span>Product engineering</span><span>Scalable systems</span></div>
+          <div className="hero-foot">{hero.supportingPhrases.map((phrase) => <span key={phrase}>{phrase}</span>)}</div>
         </section>
 
         <section className="section-shell build-section">
           <SectionHeading eyebrow="What we build" title="Intelligence, engineered into the workflow." copy="Focused systems that reduce complexity, improve decisions, and create room for better work." />
           <div className="build-grid">
-            {buildAreas.map(([code, title, copy]) => (
-              <article className="feature-card" key={code}>
-                <span className="feature-code">{code}</span><h3>{title}</h3><p>{copy}</p><i aria-hidden="true">↗</i>
+            {siteConfig.buildAreas.map((area) => (
+              <article className="feature-card" key={area.code}>
+                <span className="feature-code">{area.code}</span><h3>{area.title}</h3><p>{area.copy}</p><i aria-hidden="true">↗</i>
               </article>
             ))}
           </div>
@@ -75,10 +65,18 @@ export default function Home() {
           <div className="section-shell">
             <div className="section-row">
               <SectionHeading eyebrow="Selected work" title="Engineering depth beyond the product catalogue." copy="Verified AI, platform, and research systems—presented as technical work, not commercial FK Solutions products." />
-              <Link className="text-link" href="/labs">Explore FK Labs <span aria-hidden="true">↗</span></Link>
+              <Link className="text-link" href="/work">View all work <span aria-hidden="true">↗</span></Link>
             </div>
-            <div className="work-grid">{selectedWork.slice(0, 4).map((project) => <WorkCard key={project.slug} project={project} />)}</div>
+            <div className="work-grid">{featuredWork.map((project) => <WorkCard key={project.slug} project={project} />)}</div>
           </div>
+        </section>
+
+        <section className="section-shell homepage-labs-section">
+          <div className="section-row">
+            <SectionHeading eyebrow="FK Labs" title="Experiments with a credible path to useful software." copy="Research prototypes and applied explorations remain clearly separate from commercial products." />
+            <Link className="text-link" href="/labs">Explore FK Labs <span aria-hidden="true">↗</span></Link>
+          </div>
+          <div className="home-labs-grid">{featuredLabs.map((project) => <LabCard key={project.slug} project={project} />)}</div>
         </section>
 
         <section className="section-shell expertise-section">
@@ -88,7 +86,7 @@ export default function Home() {
 
         <section className="section-shell leadership-strip">
           <div><span className="section-kicker">Founder &amp; technical leadership</span><h2>Product direction grounded in hands-on engineering.</h2></div>
-          <div><p>FK Solutions is led by Faris Mohamed Kishtah, an AI/ML engineer working across RAG, generative AI systems, full-stack Python, and MLOps.</p><Link className="text-link" href="/about">About the company <span aria-hidden="true">↗</span></Link></div>
+          <div><p>FK Solutions is led by {founder.name}, {founder.shortRole}</p><Link className="text-link" href="/about">About the company <span aria-hidden="true">↗</span></Link></div>
         </section>
 
         <section className="section-shell why-section">
@@ -97,7 +95,7 @@ export default function Home() {
             <p>Strong technology is not defined by complexity. It is defined by what it helps people understand, decide, and accomplish.</p>
           </div>
           <div className="principles-list">
-            {principles.map(([index, title, copy]) => <article key={index}><span>{index}</span><div><h3>{title}</h3><p>{copy}</p></div></article>)}
+            {siteConfig.principles.map((principle) => <article key={principle.index}><span>{principle.index}</span><div><h3>{principle.title}</h3><p>{principle.copy}</p></div></article>)}
           </div>
         </section>
 
@@ -105,7 +103,7 @@ export default function Home() {
           <div className="section-shell industry-inner">
             <SectionHeading eyebrow="Industry focus" title="Deep workflows. Tangible impact." copy="We explore domains where better systems can change the quality and speed of everyday decisions." />
             <div className="industry-list">
-              {industries.map((industry, index) => <div key={industry}><span>0{index + 1}</span><strong>{industry}</strong><i aria-hidden="true">↗</i></div>)}
+              {siteConfig.industries.map((industry, index) => <div key={industry}><span>0{index + 1}</span><strong>{industry}</strong><i aria-hidden="true">↗</i></div>)}
             </div>
           </div>
         </section>
