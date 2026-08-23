@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   const product = getProduct(slug);
   if (!product) return {};
   return {
-    title: `${product.name} — FK Solutions`,
+    title: product.name,
     description: product.summary,
     openGraph: { title: `${product.name} — FK Solutions`, description: product.summary, images: [] },
     twitter: { card: "summary", title: `${product.name} — FK Solutions`, description: product.summary, images: [] },

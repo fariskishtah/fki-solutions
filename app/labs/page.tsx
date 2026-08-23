@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 
-export const metadata: Metadata = { title: "FK Labs — FK Solutions", description: "Experiments, prototypes, and applied AI research from FK Labs." };
+export const metadata: Metadata = { title: "FK Labs", description: "Experiments, prototypes, and applied AI research from FK Labs." };
 
 const experiments = [
   ["EXP—001", "Document relationship mapping", "Exploring how long, connected document sets can be mapped into navigable knowledge structures.", "Knowledge systems"],

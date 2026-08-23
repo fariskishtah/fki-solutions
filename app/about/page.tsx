@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 
-export const metadata: Metadata = { title: "About — FK Solutions", description: "FK Solutions builds practical AI and software products around real operational problems." };
+export const metadata: Metadata = { title: "About", description: "FK Solutions builds practical AI and software products around real operational problems." };
 
 const values = [
   ["01", "Practical innovation", "New technology matters when it improves a real workflow, decision, or outcome."],

@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://fk-solutions.aiarabic362.chatgpt.site"),
   title: {
     default: "FK Solutions — AI & Software Solutions",
     template: "%s — FK Solutions",

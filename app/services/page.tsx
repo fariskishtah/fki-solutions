@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 
-export const metadata: Metadata = { title: "Services — FK Solutions", description: "AI product development, custom platforms, automation, data intelligence, and AI integration from FK Solutions." };
+export const metadata: Metadata = { title: "Services", description: "AI product development, custom platforms, automation, data intelligence, and AI integration from FK Solutions." };
 
 const services = [
   ["01", "AI Product Development", "From opportunity definition and system architecture to production AI applications.", ["Product strategy", "AI architecture", "Application engineering", "Evaluation & iteration"]],

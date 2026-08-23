@@ -5,7 +5,7 @@ import { CTASection } from "@/components/CTASection";
 import { products } from "@/data/products";
 
 export const metadata: Metadata = {
-  title: "Products — FK Solutions",
+  title: "Products",
   description: "Explore AI-powered products from FK Solutions across legal, manufacturing, and hospitality workflows.",
 };
 
